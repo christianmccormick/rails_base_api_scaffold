@@ -37,10 +37,12 @@ module Api::V1
   
       # POST /<%= plural_name %>/1
       def create
-        if <%= class_name %>.create(<%= singular_name %>_params)
-          render json: @<%= singular_name %>, serializer: <%= class_name %>Serializer, status: :created
+        <%= singular_name %> = <%= class_name %>.create(<%= singular_name %>_params)
+
+        if <%= singular_name %>
+          render json: <%= singular_name %>, serializer: <%= class_name %>Serializer, status: :created
         else
-          render json: @<%= singular_name %>.errors, status: :unprocessable_entity
+          render json: <%= singular_name %>.errors, status: :unprocessable_entity
         end
       end
   
