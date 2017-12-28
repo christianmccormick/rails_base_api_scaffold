@@ -4,7 +4,7 @@ module Api::V1
   
       check_authorization
   
-      before_action :doorkeeper_authorize!, except: :me
+      before_action :doorkeeper_authorize!
   
       skip_before_filter :verify_authenticity_token
   
@@ -37,33 +37,38 @@ module Api::V1
   
       # POST /<%= plural_name %>/1
       def create
-        <%= singular_name %> = <%= class_name %>.create(<%= singular_name %>_params)
+        @<%= singular_name %> = <%= class_name %>.create(<%= singular_name %>_params)
 
-        if <%= singular_name %>
-          render json: <%= singular_name %>, serializer: <%= class_name %>Serializer, status: :created
-        else
-          render json: <%= singular_name %>.errors, status: :unprocessable_entity
-        end
-      end
-  
-      # PUT /<%= plural_name %>/1
-      def update
-        if @<%= singular_name %>.update(<%= singular_name %>_params)
-          render json: @<%= singular_name %>, serializer: <%= class_name %>Serializer, status: :ok
+        if @<%= singular_name %>
+          render json: @<%= singular_name %>, serializer: <%= class_name %>Serializer, status: :created
         else
           render json: @<%= singular_name %>.errors, status: :unprocessable_entity
         end
       end
   
+      # PUT /<%= plural_name %>/1
+      def update
+        if <%= singular_name %>.update(<%= singular_name %>_params)
+          render json: <%= singular_name %>, serializer: <%= class_name %>Serializer, status: :ok
+        else
+          render json: <%= singular_name %>.errors, status: :unprocessable_entity
+        end
+      end
+  
       # DELETE /<%= plural_name %>/1
       def destroy
-        @<%= singular_name %>.destroy
+        <%= singular_name %>.destroy
         render json: { message: '<%= human_name %> deleted' }
       end
   
       private
+
+      # Use callbacks to share common setup or constraints between actions.
+      def <%= singular_name %>
+        @<%= singular_name %> ||= <%= class_name %>.find(params[:id])
+      end
   
-      # Add index sorting by default
+      # Add index sorting by default.
       def sort_order
         sort_column + ' ' + sort_direction
       end
