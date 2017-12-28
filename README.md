@@ -1,8 +1,6 @@
 # RailsBaseApiScaffold
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/rails_base_api_scaffold`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+Generate API controller scaffolds for E7System's Rails Base API. The generator will create a CRUD API controller, create the controller's spec, add its route to `routes.rb`, and create a serializer for its model. Note that a model must exist before the generator can be run. See Usage for more info.
 
 ## Installation
 
@@ -22,7 +20,19 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+Before generating the scaffold you must generate the model using the built-in rails model generator.
+
+```
+rails g model friend name:string age:integer
+```
+
+After the model has been created, you can run the generator.
+
+```
+rails g rails_base_api_scaffold:controller friend
+```
+
+That's it! You should now have an API controller, serializer, route, and API controller spec for your model.
 
 ## Development
 
