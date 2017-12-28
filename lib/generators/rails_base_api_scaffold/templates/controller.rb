@@ -35,6 +35,15 @@ module Api::V1
         render json: @<%= singular_name %>, serializer: <%= class_name %>Serializer, root: false
       end
   
+      # POST /<%= plural_name %>/1
+      def create
+        if <%= class_name %>.create(<%= singular_name %>_params)
+          render json: @<%= singular_name %>, serializer: <%= class_name %>Serializer, status: :created
+        else
+          render json: @<%= singular_name %>.errors, status: :unprocessable_entity
+        end
+      end
+  
       # PUT /<%= plural_name %>/1
       def update
         if @<%= singular_name %>.update(<%= singular_name %>_params)
