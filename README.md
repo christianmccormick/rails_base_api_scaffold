@@ -34,6 +34,15 @@ rails g rails_base_api_scaffold:controller friend
 
 That's it! You should now have an API controller, serializer, route, and API controller spec for your model.
 
+## Generators
+
+The following is a list of the currently available generators.
+
+```
+controller
+serializer
+```
+
 ## Development
 
 After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
