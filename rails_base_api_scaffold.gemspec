@@ -9,8 +9,7 @@ Gem::Specification.new do |spec|
   spec.authors       = ["Christian McCormick"]
   spec.email         = ["cmccormick421@gmail.com"]
 
-  spec.summary       = %q{TODO: Write a short summary, because Rubygems requires one.}
-  spec.description   = %q{TODO: Write a longer description or delete this line.}
+  spec.summary       = "Scaffold for the E7Systems Rails Base API"
   spec.homepage      = "TODO: Put your gem's website or public repo URL here."
 
   # Prevent pushing this gem to RubyGems.org. To allow pushes either set the 'allowed_push_host'
