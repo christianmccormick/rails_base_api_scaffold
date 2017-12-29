@@ -30,7 +30,7 @@ module RailsBaseApiScaffold
           attribute.type == 'integer' ? 1 :
           attribute.type == 'float' ? 1.25 :
           attribute.type == 'decimal' ? 1.50 :
-          attribute.type == 'datetime' ? '"2017-12-27 00:00:00"' :
+          attribute.type == 'datetime' ? '"2017-12-27T00:00:00.000Z"' :
           attribute.type == 'time' ? '"00:00:00"' :
           attribute.type == 'date' ? '"2017-12-27"' :
           attribute.type == 'binary' ? '"Test"' :
