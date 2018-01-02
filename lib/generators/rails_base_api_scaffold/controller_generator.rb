@@ -7,7 +7,7 @@ module RailsBaseApiScaffold
       include Rails::Generators::ResourceHelpers
       include RailsBaseApiScaffold::Generators::GeneratorHelpers
   
-      desc "Generates controller, controller_spec and views for the model with the given NAME."
+      desc "Generates controller, controller spec, route, and serializer for the model with the given NAME."
       
       source_root File.expand_path('../templates', __FILE__)
       
