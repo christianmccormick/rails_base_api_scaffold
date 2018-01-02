@@ -3,11 +3,11 @@ require 'generators/rails_base_api_scaffold/generator_helpers'
 module RailsBaseApiScaffold
   module Generators
     # Custom scaffolding generator
-    class ControllerGenerator < Rails::Generators::NamedBase
+    class SerializerGenerator < Rails::Generators::NamedBase
       include Rails::Generators::ResourceHelpers
       include RailsBaseApiScaffold::Generators::GeneratorHelpers
   
-      desc "Generates controller, controller_spec and views for the model with the given NAME."
+      desc "Generates serializer for the model with the given NAME."
       
       source_root File.expand_path('../templates', __FILE__)
       
