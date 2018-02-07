@@ -13,8 +13,9 @@ gem 'rails_base_api_scaffold'
 #### For Rails 5.0+
 
 ```ruby
-    gem 'rails_base_api_scaffold', :branch => 'rails_5'
+    gem 'rails_base_api_scaffold', :github => 'christianmccormick/rails_base_api_scaffold', :branch => 'rails_5'
 ```
+
 And then execute:
 
     $ bundle
