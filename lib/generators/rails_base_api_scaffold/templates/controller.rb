@@ -6,7 +6,7 @@ module Api::V1
   
       before_action :doorkeeper_authorize!
   
-      skip_before_filter :verify_authenticity_token
+      skip_before_action :verify_authenticity_token
   
       load_and_authorize_resource
   
