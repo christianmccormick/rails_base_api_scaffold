@@ -4,7 +4,7 @@ module Api::V1
   
       check_authorization
   
-      before_action :doorkeeper_authorize!
+      before_filter :doorkeeper_authorize!
   
       skip_before_filter :verify_authenticity_token
   
@@ -19,10 +19,9 @@ module Api::V1
   
         raise RangeError.new("invalid page_size: #{page_size}") if page_size < 1
   
-        @<%= plural_name %> = <%= class_name %>.search_for(params[:search], order: sort_order).paginate(page: params[:page], per_page: page_size)
+        @<%= plural_name %> = <%= class_name %>.all().order(sort_order).paginate(page: params[:page], per_page: page_size)
   
-        page_counts = @<%= plural_name %>.total_entries.divmod(page_size)
-        page_count = page_counts[0] + ((page_counts[1] > 0) ? 1 : 0)
+        page_count = @<%= plural_name %>.total_pages
   
         render json: @<%= plural_name %>,
                root: '<%= plural_name %>',
@@ -37,7 +36,7 @@ module Api::V1
   
       # POST /<%= plural_name %>/1
       def create
-        @<%= singular_name %> = <%= class_name %>.create(<%= singular_name %>_params)
+        @<%= singular_name %> = <%= class_name %>.create(params[:<%= singular_name %>])
 
         if @<%= singular_name %>
           render json: @<%= singular_name %>, serializer: <%= class_name %>Serializer, status: :created
@@ -48,7 +47,7 @@ module Api::V1
   
       # PUT /<%= plural_name %>/1
       def update
-        if <%= singular_name %>.update(<%= singular_name %>_params)
+        if <%= singular_name %>.update_attributes(params[:<%= singular_name %>])
           render json: <%= singular_name %>, serializer: <%= class_name %>Serializer, status: :ok
         else
           render json: <%= singular_name %>.errors, status: :unprocessable_entity
