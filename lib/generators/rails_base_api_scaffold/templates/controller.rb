@@ -79,11 +79,7 @@ module Api::V1
       def sort_direction
         %w[asc desc].include?(params[:direction]) ? params[:direction] : 'desc'
       end
-  
-      # Only allow a trusted parameter "white list" through.
-      def <%= singular_name %>_params
-        params.require(:<%= singular_name %>).permit([<%= editable_attributes.map { |a| ":#{a.name}" }.join(', ') %>])
-      end
+      
     end
   end
   
