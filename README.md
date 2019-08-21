@@ -2,6 +2,11 @@
 
 Generate API controller scaffolds for E7System's Rails Base API. The generator will create a CRUD API controller, create the controller's spec, add its route to `routes.rb`, and create a serializer for its model. Note that a model must exist before the generator can be run. See Usage for more info.
 
+Supports Rails 3, 4, 5 through branching.
+- master - Rails 4
+- rails_3 - Rails 3
+- rails_5 - Rails 5
+
 ## Installation
 
 Add this line to your application's Gemfile:
